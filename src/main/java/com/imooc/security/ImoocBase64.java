@@ -16,6 +16,7 @@ public class ImoocBase64 {
     public static void main(String[] args) throws IOException {
         jdkBase64();
         commonCodesBase64();
+        bouncyCastleBase64();
     }
 
     public static void jdkBase64() throws IOException {
@@ -37,6 +38,14 @@ public class ImoocBase64 {
         System.out.println("encode: " + new String(encodeBytes));
 
         byte[] decodeBytes = Base64.decodeBase64(encodeBytes);
+        System.out.println("decode: " + new String(decodeBytes));
+    }
+
+    public static void bouncyCastleBase64() {
+        byte[] encodeBytes = org.bouncycastle.util.encoders.Base64.encode(src.getBytes());
+        System.out.println("encode: " + new String(encodeBytes));
+
+        byte[] decodeBytes = org.bouncycastle.util.encoders.Base64.decode(encodeBytes);
         System.out.println("decode: " + new String(decodeBytes));
     }
 }
