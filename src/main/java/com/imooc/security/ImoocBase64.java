@@ -1,6 +1,7 @@
 package com.imooc.security;
 
 import java.io.IOException;
+import org.apache.commons.codec.binary.Base64;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -14,6 +15,7 @@ public class ImoocBase64 {
 
     public static void main(String[] args) throws IOException {
         jdkBase64();
+        commonCodesBase64();
     }
 
     public static void jdkBase64() throws IOException {
@@ -28,6 +30,13 @@ public class ImoocBase64 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void commonCodesBase64() {
+        byte[] encodeBytes = Base64.encodeBase64(src.getBytes());
+        System.out.println("encode: " + new String(encodeBytes));
+
+        byte[] decodeBytes = Base64.decodeBase64(encodeBytes);
+        System.out.println("decode: " + new String(decodeBytes));
     }
 }
